@@ -72,6 +72,7 @@ class TinynetManager {
     // MARK: private
     private func buildRequest() {
         if self.method == Method.GET && self.params.count > 0 {
+            println(self.buildParams(self.params))
             self.request = NSMutableURLRequest(URL: NSURL(string: url + "?" + self.buildParams(self.params))!)
         }
 
@@ -109,7 +110,6 @@ class TinynetManager {
         for key in arrkeys {
             // 获取键值
             let value: AnyObject! = params[key];
-            // 进行键值组合
             components += self.queryComponents(key, value)
         }
         return join("&", components.map({"\($0)=\($1)"}) as [String]);

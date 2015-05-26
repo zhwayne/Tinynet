@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        Tinynet.get(url: "http://zhwayne.com") { (data, response, error) -> Void in
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

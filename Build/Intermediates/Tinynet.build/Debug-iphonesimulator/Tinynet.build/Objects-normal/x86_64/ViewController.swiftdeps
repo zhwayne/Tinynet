@@ -7,12 +7,17 @@ class-members:
 - "didReceiveMemoryWarning"
 - "viewDidLoad"
 top-level:
+- !private "Tinynet"
+- !private "Void"
+- !private "StringLiteralType"
 - "UIViewController"
 member-access:
-- "CSo11UIResponder"
-- "PSs9AnyObject"
-- "CSo8NSObject"
 - "CSo16UIViewController"
+- "CSo8NSObject"
+- "PSs9AnyObject"
+- !private "C7Tinynet7Tinynet"
+- !private "C7Tinynet14ViewController"
+- "CSo11UIResponder"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"
