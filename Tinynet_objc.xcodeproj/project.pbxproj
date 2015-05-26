@@ -14,6 +14,7 @@
 		B03AAD111B147EF50074E536 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03AAD101B147EF50074E536 /* Images.xcassets */; };
 		B03AAD141B147EF50074E536 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03AAD121B147EF50074E536 /* LaunchScreen.xib */; };
 		B03AAD201B147EF50074E536 /* Tinynet_objcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B03AAD1F1B147EF50074E536 /* Tinynet_objcTests.m */; };
+		B03AAD2B1B147F410074E536 /* Tinynet.m in Sources */ = {isa = PBXBuildFile; fileRef = B03AAD2A1B147F410074E536 /* Tinynet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		B03AAD191B147EF50074E536 /* Tinynet_objcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tinynet_objcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03AAD1E1B147EF50074E536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03AAD1F1B147EF50074E536 /* Tinynet_objcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tinynet_objcTests.m; sourceTree = "<group>"; };
+		B03AAD291B147F410074E536 /* Tinynet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tinynet.h; sourceTree = "<group>"; };
+		B03AAD2A1B147F410074E536 /* Tinynet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tinynet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				B03AAD081B147EF50074E536 /* AppDelegate.m */,
 				B03AAD0A1B147EF50074E536 /* ViewController.h */,
 				B03AAD0B1B147EF50074E536 /* ViewController.m */,
+				B03AAD291B147F410074E536 /* Tinynet.h */,
+				B03AAD2A1B147F410074E536 /* Tinynet.m */,
 				B03AAD0D1B147EF50074E536 /* Main.storyboard */,
 				B03AAD101B147EF50074E536 /* Images.xcassets */,
 				B03AAD121B147EF50074E536 /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				B03AAD0C1B147EF50074E536 /* ViewController.m in Sources */,
 				B03AAD091B147EF50074E536 /* AppDelegate.m in Sources */,
 				B03AAD061B147EF50074E536 /* main.m in Sources */,
+				B03AAD2B1B147F410074E536 /* Tinynet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +424,7 @@
 				B03AAD251B147EF50074E536 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B03AAD261B147EF50074E536 /* Build configuration list for PBXNativeTarget "Tinynet_objcTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				B03AAD281B147EF50074E536 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
