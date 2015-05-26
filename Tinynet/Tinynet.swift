@@ -86,7 +86,13 @@ class TinynetManager {
 
     private func bulidBody() {
         if self.method != Method.GET && self.params.count > 0 {
-            self.request.HTTPBody = self.buildParams(self.params).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            var error: NSError?
+            let data = NSJSONSerialization.dataWithJSONObject(self.params, options: NSJSONWritingOptions.PrettyPrinted, error: &error)
+            if let er = error {
+                
+            } else {
+                self.request.HTTPBody = data
+            }
         }
     }
     
