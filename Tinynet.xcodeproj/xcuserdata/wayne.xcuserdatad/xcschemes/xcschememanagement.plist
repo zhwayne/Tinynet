@@ -6,12 +6,24 @@
 	<dict>
 		<key>Tinynet.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B03AAC6C1B147C550074E536</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B03AAC841B147C550074E536</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B0507F921B1403280079D1CC</key>
 		<dict>
 			<key>primary</key>

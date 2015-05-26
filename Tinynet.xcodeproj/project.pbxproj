@@ -415,6 +415,7 @@
 				B0507FB41B1403280079D1CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0507FB51B1403280079D1CC /* Build configuration list for PBXNativeTarget "TinynetTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +424,7 @@
 				B0507FB71B1403280079D1CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
