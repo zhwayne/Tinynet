@@ -52,13 +52,13 @@ public class Tinynet {
 
 
 class TinynetManager {
-    let method: Method!
-    let params: Dictionary<String, AnyObject>
-    let completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void
-    let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let url: String!
-    var request: NSMutableURLRequest!
-    var task: NSURLSessionTask!
+    private let method: Method!
+    private let params: Dictionary<String, AnyObject>
+    private let completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void
+    private let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    private let url: String!
+    private var request: NSMutableURLRequest!
+    private var task: NSURLSessionTask!
     
     // MARK: init
     required init(url: String, method: Method, params: Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
@@ -112,7 +112,7 @@ class TinynetManager {
             // 进行键值组合
             components += self.queryComponents(key, value)
         }
-        return join("$", components.map({"\($0)=\($1)"}) as [String]);
+        return join("&", components.map({"\($0)=\($1)"}) as [String]);
     }
 
     private func queryComponents(key: String, _ value: AnyObject) -> [(String, String)] {

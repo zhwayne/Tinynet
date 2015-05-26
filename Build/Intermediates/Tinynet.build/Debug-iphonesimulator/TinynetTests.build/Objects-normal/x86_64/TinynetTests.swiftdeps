@@ -4,20 +4,20 @@ provides:
 nominals:
 - "C12TinynetTests12TinynetTests"
 class-members:
+- "testExample"
 - "testPerformanceExample"
 - "setUp"
-- "testExample"
 - "tearDown"
 top-level:
 - !private "BooleanLiteralType"
-- !private "StringLiteralType"
 - "XCTestCase"
 - !private "XCTAssert"
+- !private "StringLiteralType"
 member-access:
-- "CSo6XCTest"
 - "CSo10XCTestCase"
-- !private "C12TinynetTests12TinynetTests"
+- "CSo6XCTest"
 - "CSo8NSObject"
+- !private "C12TinynetTests12TinynetTests"
 - "PSs9AnyObject"
 dynamic-lookup:
 cross-module:
