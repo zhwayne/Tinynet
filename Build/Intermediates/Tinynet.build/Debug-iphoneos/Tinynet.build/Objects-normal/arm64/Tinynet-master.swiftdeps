@@ -1,6 +1,0 @@
-version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "238adaddd22ff5d0faaaf5c7106738e1"
-inputs: 
-- "/Users/wayne/Desktop/github/Tinynet/Tinynet/ViewController.swift"
-- "/Users/wayne/Desktop/github/Tinynet/Tinynet/AppDelegate.swift"
-- "/Users/wayne/Desktop/github/Tinynet/Tinynet/Tinynet.swift"
