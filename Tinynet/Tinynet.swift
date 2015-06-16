@@ -58,7 +58,7 @@ class TinynetManager {
     private let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     private let url: String!
     private var request: NSMutableURLRequest!
-    private var task: NSURLSessionTask!
+    private var task: NSURLSessionDataTask!
     
     // MARK: init
     required init(url: String, method: Method, params: Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
@@ -98,7 +98,11 @@ class TinynetManager {
     
     private func commitTask() {
         self.task = session.dataTaskWithRequest(self.request, completionHandler: { (data, response, error) -> Void in
-            self.completionHandler(data: data, response: response, error: error)
+            // 主线程回调
+            let opBlock = NSBlockOperation(block: { () -> Void in
+                self.completionHandler(data: data, response: response, error: error)
+            })
+            NSOperationQueue.mainQueue().addOperation(opBlock)
         })
         self.task.resume()
     }

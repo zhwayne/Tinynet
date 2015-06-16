@@ -17,6 +17,7 @@ typedef void(^NetCallBack)(NSData *data, NSURLResponse *response, NSError *error
 
 @interface Tinynet : NSObject
 
+
 + (void)setTimeoutInterval:(NSTimeInterval)timeInterval;
 
 + (void)requestWithURL:(NSString *)inUrl method:(NSString *)inMethod params:(NSDictionary *)inParams completionHandler:(NetCallBack)inCompletionHandler;
@@ -30,6 +31,8 @@ typedef void(^NetCallBack)(NSData *data, NSURLResponse *response, NSError *error
 + (void)post:(NSString *)inUrl params:(NSDictionary *)inParams completionHandler:(NetCallBack)inCompletionHandler;
 
 + (void)post:(NSString *)inUrl completionHandler:(NetCallBack)inCompletionHandler;
+
+
 
 @end
 

@@ -53,6 +53,16 @@ static NSTimeInterval kTimeInterval = 10;
 @end
 
 
+
+@interface TinynetManager ()
+
+
+
+@end
+
+
+
+
 @implementation TinynetManager
 {
     NSString *_method;
@@ -61,7 +71,7 @@ static NSTimeInterval kTimeInterval = 10;
     NetCallBack _completionHandler;
     NSURLSession *_session;
     NSMutableURLRequest *_request;
-    NSURLSessionTask *_task;
+    NSURLSessionDataTask *_task;
 }
 
 - (id)initWithURL:(NSString *)inUrl
@@ -160,7 +170,6 @@ completionHandler:(NetCallBack)inCompletionHandler {
     
     return components;
 }
-
 
 @end
 
