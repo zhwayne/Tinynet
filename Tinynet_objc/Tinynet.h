@@ -49,12 +49,3 @@ completionHandler:(NetCallBack)inCompletionHandler;
 
 @end
 
-
-
-
-@interface NSString (escape)
-
-- (NSString *)escape;
-
-@end
-

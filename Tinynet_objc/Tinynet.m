@@ -53,6 +53,14 @@ static NSTimeInterval kTimeInterval = 10;
 @end
 
 
+@implementation NSString (escape)
+
+- (NSString *)escape{
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@":&=;+!@#$()',*"];
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:set];
+}
+
+@end
 
 @interface TinynetManager ()
 
@@ -169,18 +177,6 @@ completionHandler:(NetCallBack)inCompletionHandler {
     }
     
     return components;
-}
-
-@end
-
-
-
-
-@implementation NSString (escape)
-
-- (NSString *)escape{
-    CFStringRef legalURLCharactersToBeEscaped = CFSTR(":&=;+!@#$()',*");
-    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(nil, (CFStringRef)self, nil, legalURLCharactersToBeEscaped, kCFStringEncodingUTF8);
 }
 
 @end

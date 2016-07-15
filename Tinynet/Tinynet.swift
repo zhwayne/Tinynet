@@ -17,34 +17,34 @@ public class Tinynet {
     public static var timeoutInterval: NSTimeInterval = 10;
     
     // MARK: request
-    public static func request(#method: Method, url: String, params: Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
+    public static func request(method: Method, url: String, params: Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
         let manager = TinynetManager(url: url, method: method, params: params, completionHandler: completionHandler)
         manager.fire()
     }
     
-    public static func request(#method: Method, url: String, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
+    public static func request(method: Method, url: String, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
         let manager = TinynetManager(url: url, method: method, params: [String:AnyObject](), completionHandler: completionHandler)
         manager.fire()
     }
     
     // MARK: get
-    public static func get(#url: String, params:Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
+    public static func get(url: String, params:Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
         let manager = TinynetManager(url: url, method: Method.GET, params: params, completionHandler: completionHandler)
         manager.fire()
     }
     
-    public static func get(#url: String, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
+    public static func get(url: String, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
         let manager = TinynetManager(url: url, method: Method.GET, params: [String:AnyObject](), completionHandler: completionHandler)
         manager.fire()
     }
     
     // MARK: post
-    public static func post(#url: String, params:Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
+    public static func post(url: String, params:Dictionary<String, AnyObject>, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
         let manager = TinynetManager(url: url, method: Method.POST, params: params, completionHandler: completionHandler)
         manager.fire()
     }
     
-    public static func post(#url: String, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
+    public static func post(url: String, completionHandler: (data: NSData!, response:NSURLResponse!, error: NSError!) -> Void) {
         let manager = TinynetManager(url: url, method: Method.POST, params: [String:AnyObject](), completionHandler: completionHandler)
         manager.fire()
     }
@@ -72,7 +72,7 @@ class TinynetManager {
     // MARK: private
     private func buildRequest() {
         if self.method == Method.GET && self.params.count > 0 {
-            println(self.buildParams(self.params))
+            print(self.buildParams(self.params))
             self.request = NSMutableURLRequest(URL: NSURL(string: url + "?" + self.buildParams(self.params))!)
         }
 
@@ -87,8 +87,14 @@ class TinynetManager {
     private func bulidBody() {
         if self.method != Method.GET && self.params.count > 0 {
             var error: NSError?
-            let data = NSJSONSerialization.dataWithJSONObject(self.params, options: NSJSONWritingOptions.PrettyPrinted, error: &error)
-            if let er = error {
+            let data: NSData?
+            do {
+                data = try NSJSONSerialization.dataWithJSONObject(self.params, options: NSJSONWritingOptions.PrettyPrinted)
+            } catch let error1 as NSError {
+                error = error1
+                data = nil
+            }
+            if error != nil {
                 
             } else {
                 self.request.HTTPBody = data
@@ -116,13 +122,13 @@ class TinynetManager {
     // 构建参数
     private func buildParams(params: Dictionary<String, AnyObject>) -> String{
         var components = [(String, String)]();
-        let arrkeys = sorted(Array(params.keys))
+        let arrkeys = Array(params.keys).sort()
         for key in arrkeys {
             // 获取键值
             let value: AnyObject! = params[key];
             components += self.queryComponents(key, value)
         }
-        return join("&", components.map({"\($0)=\($1)"}) as [String]);
+        return (components.map({"\($0)=\($1)"}) as [String]).joinWithSeparator("&");
     }
 
     private func queryComponents(key: String, _ value: AnyObject) -> [(String, String)] {
@@ -136,15 +142,15 @@ class TinynetManager {
                 components += queryComponents("\(key)", value)
             }
         } else {
-            components.extend([(self.escape(key), self.escape("\(value)"))])
+            components.appendContentsOf([(self.escape(key), self.escape("\(value)"))])
         }
 
         return components
     }
 
     private func escape(string: String) -> String {
-        let legalURLCharactersToBeEscaped: CFStringRef = ":&=;+!@#$()',*"
-        return CFURLCreateStringByAddingPercentEscapes(nil, string, nil, legalURLCharactersToBeEscaped, CFStringBuiltInEncodings.UTF8.rawValue) as String
+        let legalURLCharactersToBeEscaped = NSCharacterSet.init(charactersInString: ":&=;+!@#$()',*")
+        return string.stringByAddingPercentEncodingWithAllowedCharacters(legalURLCharactersToBeEscaped)!
     }
 
 
